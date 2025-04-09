@@ -43,6 +43,25 @@
       }
     }
     </script>
+    <% } else { %>
+    
+      <script type="injector-importmap">
+        {
+          "imports": {
+            "@vue-micro/root-config": "https://walthuang-1412.github.io/micro-root/vue-micro-root-config.js",
+            "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
+          }
+        }
+      </script>
+      <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@vue-micro/sub": "https://walthuang-1412.github.io/micro-sub/js/app.js",
+          "@vue-micro/navbar": "https://walthuang-1412.github.io/micro-navbar/js/app.js"
+        }
+      }
+      </script>
+    
     <% } %>
       <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet">
       <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
