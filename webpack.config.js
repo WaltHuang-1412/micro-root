@@ -13,9 +13,6 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    output: {
-      publicPath: process.env.NODE_ENV === "production" ? "/micro-root/" : "/",
-    },
     // modify the webpack config however you'd like to by adding to this object
     plugins: [
       new HtmlWebpackPlugin({
