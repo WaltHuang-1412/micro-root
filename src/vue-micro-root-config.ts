@@ -21,7 +21,7 @@ registerApplication({
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: ["/"],
+  activeWhen: ["/", "/sub"],
   customProps: {
     domElement: document.getElementById("app__navbar-slot"),
   },
