@@ -7,7 +7,7 @@ registerApplication({
       /* webpackIgnore: true */ // @ts-ignore-next
       "@single-spa/welcome"
     ),
-  activeWhen: ["/welcome"],
+  activeWhen: (location) => location.hash.startsWith("#/welcome"),
 });
 
 registerApplication({
@@ -21,7 +21,7 @@ registerApplication({
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: ["/sub"],
+    activeWhen: (location) => location.hash.startsWith("#/sub"),
   customProps: {
     domElement: document.getElementById("app__navbar-slot"),
   },
@@ -37,7 +37,7 @@ registerApplication({
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: ["/sub"],
+    activeWhen: (location) => location.hash.startsWith("#/sub"),
   customProps: {
     domElement: document.getElementById("app__sub-slot"),
   },
