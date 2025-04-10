@@ -26,8 +26,7 @@ registerApplication({
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: (location) =>
-    location.pathname === "/" || location.pathname.startsWith("/sub"),
+  activeWhen: ["/", "/sub"],
   customProps: {
     domElement: document.getElementById("app__navbar-slot"),
   },
