@@ -26,7 +26,7 @@ registerApplication({
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: ["/sub"],
+  activeWhen: ["/", "/sub"],
   customProps: {
     domElement: document.getElementById("app__navbar-slot"),
   },
@@ -66,6 +66,6 @@ start({
   urlRerouteOnly: true,
 });
 
-if (window.location.pathname === "/") {
-  navigateToUrl("/sub");
-}
+// if (window.location.pathname === "/") {
+//   navigateToUrl("/sub");
+// }
