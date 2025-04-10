@@ -14,14 +14,14 @@
   <!-- <meta name="import-map-overrides-domains" content="denylist:prod.example.com" /> -->
 
   <!-- Shared dependencies go into this import map -->
-  <script type="injector-importmap">
+  <!-- <script type="injector-importmap">
     {
       "imports": {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js"
       }
     }
   </script>
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js" as="module">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js" as="module"> -->
 
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="injector-importmap" src="/importmap.json"></script> -->
@@ -31,7 +31,8 @@
       {
         "imports": {
           "@vue-micro/root-config": "//localhost:9000/vue-micro-root-config.js",
-          "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
+          "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js",
+          "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js"
         }
       }
     </script>
@@ -53,7 +54,8 @@
         {
           "imports": {
             "@vue-micro/root-config": "https://walthuang-1412.github.io/micro-root/vue-micro-root-config.js",
-            "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
+            "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js",
+            "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js"
           }
         }
       </script>
@@ -71,6 +73,8 @@
       </script>
 
       <% } %>
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js"
+          as="module">
         <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
         <script
