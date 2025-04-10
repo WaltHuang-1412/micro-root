@@ -66,7 +66,8 @@ start({
   urlRerouteOnly: true,
 });
 
-if (window.location.pathname === "/") {
-  // navigateToUrl("/auth");
-  window.location.href = "/auth";
+const basePrefix = "/micro-root";
+
+if (window.location.pathname === basePrefix + "/") {
+  navigateToUrl(basePrefix + "/auth");
 }
