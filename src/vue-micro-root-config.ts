@@ -1,4 +1,9 @@
-import { registerApplication, start, LifeCycles } from "single-spa";
+import {
+  registerApplication,
+  start,
+  LifeCycles,
+  navigateToUrl,
+} from "single-spa";
 
 registerApplication({
   name: "single-spa/welcome",
@@ -60,3 +65,7 @@ registerApplication({
 start({
   urlRerouteOnly: true,
 });
+
+if (window.location.pathname === "/") {
+  navigateToUrl("/auth");
+}
