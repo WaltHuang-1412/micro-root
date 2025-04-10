@@ -21,7 +21,7 @@ registerApplication({
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: ["/", "/sub"],
+  activeWhen: ["/sub"],
   customProps: {
     domElement: document.getElementById("app__navbar-slot"),
   },
@@ -40,6 +40,20 @@ registerApplication({
   activeWhen: ["/sub"],
   customProps: {
     domElement: document.getElementById("app__sub-slot"),
+  },
+});
+
+registerApplication({
+  name: "vue-micro/auth",
+  app: () =>
+    System.import("@vue-micro/auth").then((module) => ({
+      bootstrap: module.bootstrap,
+      mount: module.mount,
+      unmount: module.unmount,
+    })),
+  activeWhen: ["/auth"],
+  customProps: {
+    domElement: document.getElementById("auth-app"), // ✅ 你自己定義的容器
   },
 });
 

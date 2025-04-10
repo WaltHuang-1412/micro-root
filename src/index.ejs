@@ -39,12 +39,16 @@
     {
       "imports": {
         "@vue-micro/sub": "http://localhost:8081/js/app.js",
-        "@vue-micro/navbar": "http://localhost:8080/js/app.js"
+        "@vue-micro/navbar": "http://localhost:8080/js/app.js",
+        "@vue-micro/auth": "http://localhost:8082/vue-micro-auth.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js",
+        "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"
       }
     }
     </script>
     <% } else { %>
-    
+
       <script type="injector-importmap">
         {
           "imports": {
@@ -57,21 +61,25 @@
       {
         "imports": {
           "@vue-micro/sub": "https://walthuang-1412.github.io/micro-sub/js/app.js",
-          "@vue-micro/navbar": "https://walthuang-1412.github.io/micro-navbar/js/app.js"
+          "@vue-micro/navbar": "https://walthuang-1412.github.io/micro-navbar/js/app.js",
+          "@vue-micro/auth": "https://walthuang-1412.github.io/micro-auth/vue-micro-auth.js",
+          "react": "https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js",
+          "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js",
+          "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"
         }
       }
       </script>
-    
-    <% } %>
-      <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet">
-      <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
-      <script
-        src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/system.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/amd.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-exports.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-register.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/use-default.min.js"></script>
+
+      <% } %>
+        <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/system.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/amd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-exports.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-register.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/use-default.min.js"></script>
 </head>
 
 <body>
@@ -82,6 +90,7 @@
     <div id="app__navbar-slot"></div>
     <div id="app__sub-slot"></div>
   </main>
+  <main id="auth-app"></main>
   <script>
     window.importMapInjector.initPromise.then(() => {
       import('@vue-micro/root-config');
