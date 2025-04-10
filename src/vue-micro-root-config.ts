@@ -1,53 +1,54 @@
-import {
-  registerApplication,
-  start,
-  LifeCycles,
-  navigateToUrl,
-} from "single-spa";
+import { registerApplication, start, navigateToUrl } from "single-spa";
 
-registerApplication({
-  name: "single-spa/welcome",
-  app: () =>
-    import(
-      /* webpackIgnore: true */ // @ts-ignore-next
-      "@single-spa/welcome"
-    ),
-  activeWhen: ["/welcome"],
-});
+// ✅ 自動判斷 base prefix
+const isProd = location.pathname.startsWith("/micro-root");
+const basePrefix = isProd ? "/micro-root" : "";
 
+// ✅ 動態 activeWhen 建立器
+const withBase = (path: string) => `${basePrefix}${path}`;
+
+// ✅ welcome
+// registerApplication({
+//   name: "single-spa/welcome",
+//   app: () => import(/* webpackIgnore: true */ "@single-spa/welcome"),
+//   activeWhen: [withBase("/welcome")],
+// });
+
+// ✅ navbar
 registerApplication({
   name: "vue-micro/navbar",
   app: () =>
-    System.import(
-      /* webpackIgnore: true */ // @ts-ignore-next
-      "@vue-micro/navbar"
-    ).then((module) => ({
+    System.import("@vue-micro/navbar").then((module) => ({
       bootstrap: module.bootstrap,
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: ["/", "/sub"],
+  activeWhen: [
+    (location) =>
+      location.pathname === withBase("/") ||
+      location.pathname.startsWith(withBase("/sub")),
+  ],
   customProps: {
     domElement: document.getElementById("app__navbar-slot"),
   },
 });
+
+// ✅ sub
 registerApplication({
   name: "vue-micro/sub",
   app: () =>
-    System.import(
-      /* webpackIgnore: true */ // @ts-ignore-next
-      "@vue-micro/sub"
-    ).then((module) => ({
+    System.import("@vue-micro/sub").then((module) => ({
       bootstrap: module.bootstrap,
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: ["/sub"],
+  activeWhen: [withBase("/sub")],
   customProps: {
     domElement: document.getElementById("app__sub-slot"),
   },
 });
 
+// ✅ auth
 registerApplication({
   name: "vue-micro/auth",
   app: () =>
@@ -56,18 +57,16 @@ registerApplication({
       mount: module.mount,
       unmount: module.unmount,
     })),
-  activeWhen: ["/auth"],
+  activeWhen: [withBase("/auth")],
   customProps: {
-    domElement: document.getElementById("auth-app"), // ✅ 你自己定義的容器
+    domElement: document.getElementById("auth-app"),
   },
 });
 
-start({
-  urlRerouteOnly: true,
-});
+// ✅ 啟動 single-spa
+start({ urlRerouteOnly: true });
 
-const basePrefix = "/micro-root";
-
-if (window.location.pathname === basePrefix + "/") {
-  navigateToUrl(basePrefix + "/auth");
+// ✅ 根路徑自動導向 /auth
+if (window.location.pathname === `${basePrefix}/`) {
+  navigateToUrl(`${basePrefix}/auth`);
 }
