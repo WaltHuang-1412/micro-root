@@ -48,24 +48,24 @@ registerApplication({
   },
 });
 
-registerApplication({
-  name: "vue-micro/auth",
-  app: () =>
-    System.import("@vue-micro/auth").then((module) => ({
-      bootstrap: module.bootstrap,
-      mount: module.mount,
-      unmount: module.unmount,
-    })),
-  activeWhen: ["/auth"],
-  customProps: {
-    domElement: document.getElementById("auth-app"), // ✅ 你自己定義的容器
-  },
-});
+// registerApplication({
+//   name: "vue-micro/auth",
+//   app: () =>
+//     System.import("@vue-micro/auth").then((module) => ({
+//       bootstrap: module.bootstrap,
+//       mount: module.mount,
+//       unmount: module.unmount,
+//     })),
+//   activeWhen: ["/auth"],
+//   customProps: {
+//     domElement: document.getElementById("auth-app"), // ✅ 你自己定義的容器
+//   },
+// });
 
 start({
   urlRerouteOnly: true,
 });
 
 if (window.location.pathname === "/") {
-  navigateToUrl("/auth");
+  navigateToUrl("/sub");
 }
