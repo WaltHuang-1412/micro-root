@@ -34,9 +34,9 @@
         }
       }
     </script>
-  <% } else { %>
-    <!-- ✅ Production Import Map -->
-    <script type="injector-importmap">
+    <% } else { %>
+      <!-- ✅ Production Import Map -->
+      <script type="injector-importmap">
       {
         "imports": {
           "@vue-micro/root-config": "https://walthuang-1412.github.io/micro-root/vue-micro-root-config.js",
@@ -46,7 +46,7 @@
       }
     </script>
 
-    <script type="systemjs-importmap">
+      <script type="systemjs-importmap">
       {
         "imports": {
           "@vue-micro/sub": "https://walthuang-1412.github.io/micro-sub/js/app.js",
@@ -57,27 +57,24 @@
         }
       }
     </script>
-  <% } %>
+      <% } %>
 
-  <!-- ✅ CDN Resource preload (可選，不 preload 也可) -->
-  <link
-    rel="preload"
-    href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js"
-    as="script"
-    crossorigin="anonymous"
-  />
+        <!-- ✅ CDN Resource preload (可選，不 preload 也可) -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js"
+          as="script" crossorigin="anonymous" />
 
-  <!-- Normalize CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
+        <!-- Normalize CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
 
-  <!-- SystemJS tools -->
-  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/system.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/amd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-exports.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-register.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/use-default.min.js"></script>
+        <!-- SystemJS tools -->
+        <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/system.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/amd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-exports.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-register.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/use-default.min.js"></script>
 </head>
 
 <body>
@@ -89,9 +86,14 @@
   <main id="auth-app"></main>
 
   <script>
-    window.importMapInjector.initPromise.then(() => {
-      import('@vue-micro/root-config');
+    document.addEventListener('DOMContentLoaded', () => {
+      window.importMapInjector.initPromise.then(() => {
+        import('@vue-micro/root-config');
+      });
     });
+    // window.importMapInjector.initPromise.then(() => {
+    //   import('@vue-micro/root-config');
+    // });
   </script>
 
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
