@@ -66,7 +66,8 @@ registerApplication({
 // ✅ 啟動 single-spa
 start({ urlRerouteOnly: true });
 
-// ✅ 根路徑自動導向 /auth
 if (window.location.pathname === `${basePrefix}/`) {
-  navigateToUrl(`${basePrefix}/auth`);
+  setTimeout(() => {
+    navigateToUrl(`${basePrefix}/auth`);
+  }, 0); // ✅ 或用微延遲確保順序
 }
