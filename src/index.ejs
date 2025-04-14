@@ -9,7 +9,7 @@
 
   <!-- ✅ Content Security Policy -->
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; img-src 'self' https: data:; object-src 'none';" />
+    content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: http://35.236.134.249:8088 localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; img-src 'self' https: data:; object-src 'none';" />
 
   <% if (isLocal) { %>
     <!-- ✅ Local 開發 Import Map -->
@@ -34,9 +34,9 @@
         }
       }
     </script>
-  <% } else { %>
-    <!-- ✅ Production Import Map -->
-    <script type="injector-importmap">
+    <% } else { %>
+      <!-- ✅ Production Import Map -->
+      <script type="injector-importmap">
       {
         "imports": {
           "@vue-micro/root-config": "https://walthuang-1412.github.io/micro-root/vue-micro-root-config.js",
@@ -46,7 +46,7 @@
       }
     </script>
 
-    <script type="systemjs-importmap">
+      <script type="systemjs-importmap">
       {
         "imports": {
           "@vue-micro/sub": "https://walthuang-1412.github.io/micro-sub/js/app.js",
@@ -57,27 +57,24 @@
         }
       }
     </script>
-  <% } %>
+      <% } %>
 
-  <!-- ✅ CDN Resource preload (可選，不 preload 也可) -->
-  <link
-    rel="preload"
-    href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js"
-    as="script"
-    crossorigin="anonymous"
-  />
+        <!-- ✅ CDN Resource preload (可選，不 preload 也可) -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js"
+          as="script" crossorigin="anonymous" />
 
-  <!-- Normalize CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
+        <!-- Normalize CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
 
-  <!-- SystemJS tools -->
-  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/system.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/amd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-exports.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-register.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/use-default.min.js"></script>
+        <!-- SystemJS tools -->
+        <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/system.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/amd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-exports.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/named-register.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/extras/use-default.min.js"></script>
 </head>
 
 <body>
