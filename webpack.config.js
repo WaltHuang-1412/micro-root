@@ -13,7 +13,6 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
     plugins: [
       new HtmlWebpackPlugin({
         inject: false,
@@ -24,5 +23,14 @@ module.exports = (webpackConfigEnv, argv) => {
         },
       }),
     ],
+    devServer: {
+      proxy: {
+        "/api/v1": {
+          target: "http://localhost:8088", // 👈 你的 Go/Gin 後端 port
+          changeOrigin: true,
+          pathRewrite: { "^/api/v1": "/api/v1" },
+        },
+      },
+    },
   });
 };
